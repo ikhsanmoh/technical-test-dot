@@ -28,20 +28,19 @@ function App() {
   return (
     <Router>
       <Header user={user} logout={onLogout} />
-      <main>
+      <main style={{ marginTop: 20 }} className='container'>
         <Switch>
           <Route exact path="/">
             <Products />
           </Route>
           <Route path="/login">
-            <Login />
+            <Login user={user} setUser={setUser} />
           </Route>
           <Route path="/order">
             <Order />
           </Route>
         </Switch>
       </main>
-      <Footer />
     </Router>
   )
 }
