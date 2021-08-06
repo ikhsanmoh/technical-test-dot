@@ -1,19 +1,48 @@
+import { useState } from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 import Header from './components/base/Header'
 import Footer from './components/base/Footer'
-import { useState } from 'react'
-import './App.css';
+import Login from './pages/Login'
+import Products from './pages/Products';
+import Order from './pages/Order'
+import './App.css'
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false)
+  const [user, setUser] = useState({
+    isLogin: true,
+    data: {}
+  })
+
+  const onLogout = () => {
+    setUser({
+      isLogin: false,
+      data: {}
+    })
+  }
 
   return (
-    <div className="container">
-      <Header />
+    <Router>
+      <Header user={user} logout={onLogout} />
       <main>
-        Main
+        <Switch>
+          <Route exact path="/">
+            <Products />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/order">
+            <Order />
+          </Route>
+        </Switch>
       </main>
       <Footer />
-    </div>
+    </Router>
   )
 }
 
