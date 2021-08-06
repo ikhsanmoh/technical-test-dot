@@ -1,3 +1,5 @@
+import Header from './components/base/Header'
+import Footer from './components/base/Footer'
 import { useState } from 'react'
 import './App.css';
 
@@ -6,7 +8,11 @@ function App() {
 
   return (
     <div className="container">
-      Main
+      <Header />
+      <main>
+        Main
+      </main>
+      <Footer />
     </div>
   )
 }
