@@ -22,8 +22,9 @@ const Products = () => {
     <section style={myStyles.wrapper}>
       {products.length <= 0 ?
         <p style={myStyles.noProductsText}>No products available</p> :
-        products.map(product => (
+        products.map((product, index) => (
           <Product
+            key={index}
             id={product.id}
             name={product.name}
             price={product.price}

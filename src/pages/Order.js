@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
+// import axios from 'axios'
+
+import { API } from '../config/api'
 import FormInput from '../components/FormInput'
 import Button from '../components/Button'
 import productsFakeData from '../fake-data/ProductsData'
@@ -53,6 +56,10 @@ const Order = () => {
     cost: '',
   })
 
+  useEffect(() => {
+    loadCities()
+  }, [])
+
   if (!id) return null
 
   const product = productsFakeData.find(p => p.id === +id)
@@ -77,6 +84,15 @@ const Order = () => {
       name: "Aceh Besar",
     },
   ]
+
+  const loadCities = async () => {
+    try {
+      const response = await API.get('province')
+      console.log(response)
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const payHandler = () => {
     const { receiverName, destinationCity, carrier } = formData
