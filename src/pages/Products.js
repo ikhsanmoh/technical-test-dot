@@ -1,7 +1,18 @@
+import Product from '../components/Product'
+
+const myStyles = {
+  wrapper: {
+    display: 'flex',
+    flexFlow: 'row wrap',
+  }
+}
+
 const Products = () => {
   return (
-    <section>
-      This is Products Page
+    <section style={myStyles.wrapper}>
+      <Product />
+      <Product />
+      <Product />
     </section>
   )
 }

@@ -23,3 +23,8 @@ a {
 button:hover {
   opacity: .9;
 }
+
+.overlay:hover {
+  background-color: black;
+  opacity: .05;
+}
