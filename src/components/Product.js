@@ -21,7 +21,7 @@ const myStyles = {
   },
   image: {
     width: '100%',
-    height: 'auto',
+    height: 180,
   },
   infoWrapper: {
     padding: 10
