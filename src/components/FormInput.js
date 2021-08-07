@@ -23,20 +23,29 @@ const FormInput = ({
   value,
   label,
   required,
+  selectOptions
 }) => {
   return (
     <div style={myStyles.inputGroup}>
       <label htmlFor={name}>{label}</label>
-      <input
-        style={myStyles.input}
-        type={type}
-        id={name}
-        name={name}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        required={required}
-      />
+      {type === 'select' ?
+        <select name={name} id={name} style={myStyles.input} onChange={onChange} required={required}>
+          <option value="">Select</option>
+          {selectOptions.map((opt, index) => (
+            <option key={index} value={opt.val}>{opt.name}</option>
+          ))}
+        </select>
+        :
+        <input
+          style={myStyles.input}
+          type={type}
+          id={name}
+          name={name}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          required={required}
+        />}
     </div>
   )
 }

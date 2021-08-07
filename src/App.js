@@ -38,7 +38,7 @@ function App() {
             <Login user={user} setUser={setUser} />
           </Route>
           <PrivateRoute
-            path="/order"
+            path='/order/:id'
             children={() => <Order />}
             user={user}
           />
