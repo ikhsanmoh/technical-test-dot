@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import FormInput from '../components/FormInput'
 import Button from '../components/Button'
+import productsFakeData from '../fake-data/ProductsData'
 
 const myStyles = {
   productOverviews: {
@@ -54,6 +55,8 @@ const Order = () => {
 
   if (!id) return null
 
+  const product = productsFakeData.find(p => p.id === +id)
+
   const shippingMethods = [
     { name: 'JNE', val: 'jne' },
     { name: 'POS', val: 'pos' },
@@ -94,11 +97,11 @@ const Order = () => {
   return (
     <section>
       <div style={myStyles.productOverviews} className="product-overview">
-        <img style={myStyles.productImage} src="/assets/macbook-m1.png" alt="img" />
+        <img style={myStyles.productImage} src={`/assets/${product.thumbnail}`} alt="img" />
         <div style={myStyles.productDetails} className="info-wrapper">
-          <p><span style={myStyles.strongText}>Name: </span>Product name</p>
-          <p><span style={myStyles.strongText}>Price: </span>Rp. 0</p>
-          <p><span style={myStyles.strongText}>Weight: </span>0 kg</p>
+          <p><span style={myStyles.strongText}>Name: </span>{product.name}</p>
+          <p><span style={myStyles.strongText}>Price: </span>Rp. {product.price}</p>
+          <p><span style={myStyles.strongText}>Weight: </span>{product.weight} Gram</p>
         </div>
       </div>
       <div style={myStyles.shippingForm} className="shipping-form">
